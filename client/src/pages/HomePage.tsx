@@ -1,12 +1,14 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import TaskList from "@components/task-list/TaskList";
 import TaskFilterBar from "@src/components/task-filter-bar/TaskFilterBar";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@src/store";
+import { setMasterData } from "@src/store/taskList-slice/TaskListSlice";
 
 const HomePage: React.FC = () => {
     const [listName, setListName] = useState("all");
     const [searchText, setSearchText] = useState("");
+    const dispatch = useDispatch();
     const allTaskList = useSelector(
         (state: RootState) => state.taskList.taskList
     );
@@ -31,6 +33,19 @@ const HomePage: React.FC = () => {
             setList(filterList);
         }
     };
+    useEffect(() => {
+        const dataJSON = localStorage.getItem("tsk_data");
+        if (!dataJSON) {
+            localStorage.setItem("tsk_data", JSON.stringify([]));
+        } else {
+            const data = JSON.parse(dataJSON);
+            dispatch(setMasterData({ taskList: data }));
+            setList(data);
+        }
+    }, [dispatch]);
+    useEffect(() => {
+        setList(allTaskList);
+    }, [allTaskList]);
     return (
         <>
             <TaskFilterBar

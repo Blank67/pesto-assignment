@@ -2,8 +2,12 @@ import React, { ChangeEvent, useState } from "react";
 import "./TaskForm.scss";
 import { Button, Form, Modal } from "react-bootstrap";
 import { TaskFormProps } from "@src/customTypes/types";
+import { randomIdGenerator } from "@src/utils/utils";
+import { useDispatch } from "react-redux";
+import { addTask } from "@src/store/taskList-slice/TaskListSlice";
 
 const TaskForm: React.FC<TaskFormProps> = ({ show, setShow }) => {
+    const dispatch = useDispatch();
     const [formData, setFormData] = useState({
         title: "",
         description: "",
@@ -55,7 +59,12 @@ const TaskForm: React.FC<TaskFormProps> = ({ show, setShow }) => {
         if (!isValid) {
             return;
         }
-        // TODO: Save Task
+        const taskObject = {
+            ...formData,
+            id: randomIdGenerator(),
+        };
+        dispatch(addTask({ task: taskObject }));
+        hideFormHandler();
     };
     const hideFormHandler = () => {
         setFormData({

@@ -19,6 +19,11 @@ export type TaskListArrayState = {
     taskList: TaskItem[];
 };
 
+export type TaskState = {
+    task: TaskItem;
+};
+
+
 export type TaskCardProps = {
     task: TaskItem;
 };

@@ -1,10 +1,8 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { TaskListArrayState } from "@customTypes/types";
-import { DUMMY_DATA } from "@src/utils/data";
+import { TaskListArrayState, TaskState } from "@customTypes/types";
 
 const initialState: TaskListArrayState = {
-    // taskList: [],
-    taskList: DUMMY_DATA,
+    taskList: [],
 };
 
 const taskListSlice = createSlice({
@@ -14,7 +12,10 @@ const taskListSlice = createSlice({
         setMasterData: (state, action: PayloadAction<TaskListArrayState>) => {
             state.taskList = action.payload.taskList;
         },
-        addTask: (state, action: PayloadAction) => {},
+        addTask: (state, action: PayloadAction<TaskState>) => {
+            state.taskList = [action.payload.task, ...state.taskList];
+            localStorage.setItem("tsk_data", JSON.stringify(state.taskList));
+        },
         updateTask: (state, action: PayloadAction) => {},
     },
 });
