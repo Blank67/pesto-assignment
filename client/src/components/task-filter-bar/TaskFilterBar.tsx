@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Container, Form } from "react-bootstrap";
+import { Container, Form } from "react-bootstrap";
 import "./TaskFilterBar.scss";
 import { TaskFilterBarProps } from "@customTypes/types";
 
@@ -8,7 +8,6 @@ const TaskFilterBar: React.FC<TaskFilterBarProps> = ({
     onSelectChange,
     searchText,
     setSearchText,
-    searchHandler,
 }) => {
     return (
         <Container className="task-controls">
@@ -22,9 +21,6 @@ const TaskFilterBar: React.FC<TaskFilterBarProps> = ({
                             setSearchText(e.target.value);
                         }}
                     />
-                    <Button variant="outline-secondary" onClick={searchHandler}>
-                        Search
-                    </Button>
                 </div>
             </div>
             <div className="task-filter-box">

@@ -32,7 +32,6 @@ export type TaskFilterBarProps = {
     onSelectChange: (e: ChangeEvent<HTMLSelectElement>) => void;
     searchText: string;
     setSearchText: React.Dispatch<React.SetStateAction<string>>;
-    searchHandler: () => void;
 };
 
 export type TaskListProps = {
