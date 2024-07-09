@@ -1,0 +1,21 @@
+:root {
+    --header-box-shadow: 3px 3px 16.4px -4px rgba(0, 0, 0, 0.1);
+    --input-error-color: rgba(255, 0, 0);
+    --container-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.form-control,
+.form-select {
+    &:focus {
+        box-shadow: none;
+    }
+}
+
+.error-border,
+.error-border:focus {
+    border-color: var(--input-error-color);
+}
+
+.box-shadow {
+    box-shadow: var(--container-box-shadow);
+    padding: 2rem;
+}

@@ -1,0 +1,21 @@
+.task-controls {
+    margin-bottom: 2rem;
+    .task-search-bar {
+        margin-bottom: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .search-input-box {
+            display: flex;
+            gap: 1rem;
+        }
+    }
+    .task-filter-box {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        select {
+            width: max-content;
+        }
+    }
+}
