@@ -1,6 +1,6 @@
 import React from "react";
 import "./TaskCard.scss";
-import { TaskCardProps } from "@src/customTypes/types";
+import { TaskCardProps } from "@customTypes/types";
 
 const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
     return (

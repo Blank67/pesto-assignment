@@ -2,7 +2,7 @@ import React from "react";
 import TaskCard from "./task-card/TaskCard";
 import "./TaskList.scss";
 import { Container } from "react-bootstrap";
-import { TaskListProps } from "@src/customTypes/types";
+import { TaskListProps } from "@customTypes/types";
 
 const TaskList: React.FC<TaskListProps> = ({ taskList }) => {
     return (

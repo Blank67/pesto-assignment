@@ -1,9 +1,9 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
 import TaskList from "@components/task-list/TaskList";
-import TaskFilterBar from "@src/components/task-filter-bar/TaskFilterBar";
+import TaskFilterBar from "@components/task-filter-bar/TaskFilterBar";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@src/store";
-import { setMasterData } from "@src/store/taskList-slice/TaskListSlice";
+import { RootState } from "@store/index";
+import { setMasterData } from "@store/taskList-slice/TaskListSlice";
 
 const HomePage: React.FC = () => {
     const [listName, setListName] = useState("all");

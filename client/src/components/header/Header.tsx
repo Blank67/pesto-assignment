@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Container, Navbar } from "react-bootstrap";
 import "./Header.scss";
-import TaskForm from "../task-form/TaskForm";
+import TaskForm from "@components/task-form/TaskForm";
 
 const Header: React.FC = () => {
     const [showForm, setShowForm] = useState(false);

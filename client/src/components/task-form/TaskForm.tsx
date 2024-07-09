@@ -1,10 +1,10 @@
 import React, { ChangeEvent, useState } from "react";
 import "./TaskForm.scss";
 import { Button, Form, Modal } from "react-bootstrap";
-import { TaskFormProps } from "@src/customTypes/types";
-import { randomIdGenerator } from "@src/utils/utils";
+import { TaskFormProps } from "@customTypes/types";
+import { randomIdGenerator } from "@utils/utils";
 import { useDispatch } from "react-redux";
-import { addTask } from "@src/store/taskList-slice/TaskListSlice";
+import { addTask } from "@store/taskList-slice/TaskListSlice";
 
 const TaskForm: React.FC<TaskFormProps> = ({ show, setShow }) => {
     const dispatch = useDispatch();

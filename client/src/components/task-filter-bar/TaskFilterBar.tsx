@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import "./TaskFilterBar.scss";
-import { TaskFilterBarProps } from "@src/customTypes/types";
+import { TaskFilterBarProps } from "@customTypes/types";
 
 const TaskFilterBar: React.FC<TaskFilterBarProps> = ({
     listName,
