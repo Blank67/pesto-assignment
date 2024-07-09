@@ -16,7 +16,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
     return (
         <>
             <div className="task-card">
-                <div>
+                <div className="task-details">
                     <h3>{task.title}</h3>
                     <p>{task.description}</p>
                 </div>
