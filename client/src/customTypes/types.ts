@@ -23,7 +23,6 @@ export type TaskState = {
     task: TaskItem;
 };
 
-
 export type TaskCardProps = {
     task: TaskItem;
 };
@@ -43,4 +42,6 @@ export type TaskListProps = {
 export type TaskFormProps = {
     show: boolean;
     setShow: React.Dispatch<React.SetStateAction<boolean>>;
+    modalId: string;
+    task?: TaskItem;
 };

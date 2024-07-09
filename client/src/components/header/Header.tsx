@@ -7,7 +7,11 @@ const Header: React.FC = () => {
     const [showForm, setShowForm] = useState(false);
     return (
         <>
-            <TaskForm show={showForm} setShow={setShowForm} />
+            <TaskForm
+                modalId="add-task"
+                show={showForm}
+                setShow={setShowForm}
+            />
             <Navbar className="custom-nav">
                 <Container>
                     <Navbar.Brand>Brand</Navbar.Brand>

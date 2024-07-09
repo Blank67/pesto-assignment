@@ -1,12 +1,17 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import "./TaskForm.scss";
 import { Button, Form, Modal } from "react-bootstrap";
 import { TaskFormProps } from "@customTypes/types";
 import { randomIdGenerator } from "@utils/utils";
 import { useDispatch } from "react-redux";
-import { addTask } from "@store/taskList-slice/TaskListSlice";
+import { addTask, updateTask } from "@store/taskList-slice/TaskListSlice";
 
-const TaskForm: React.FC<TaskFormProps> = ({ show, setShow }) => {
+const TaskForm: React.FC<TaskFormProps> = ({
+    show,
+    setShow,
+    modalId,
+    task,
+}) => {
     const dispatch = useDispatch();
     const [formData, setFormData] = useState({
         title: "",
@@ -59,11 +64,21 @@ const TaskForm: React.FC<TaskFormProps> = ({ show, setShow }) => {
         if (!isValid) {
             return;
         }
-        const taskObject = {
-            ...formData,
-            id: randomIdGenerator(),
-        };
-        dispatch(addTask({ task: taskObject }));
+        if (modalId === "add-task") {
+            const taskObject = {
+                ...formData,
+                id: randomIdGenerator(),
+            };
+            dispatch(addTask({ task: taskObject }));
+        } else {
+            if (task) {
+                const taskObject = {
+                    ...formData,
+                    id: task.id,
+                };
+                dispatch(updateTask({ task: taskObject }));
+            }
+        }
         hideFormHandler();
     };
     const hideFormHandler = () => {
@@ -79,16 +94,23 @@ const TaskForm: React.FC<TaskFormProps> = ({ show, setShow }) => {
         });
         setShow(false);
     };
+    useEffect(() => {
+        if (task) {
+            setFormData(task);
+        }
+    }, [task]);
     return (
         <Modal
             show={show}
             onHide={hideFormHandler}
             centered
-            id="add-task"
+            id={modalId}
             backdrop="static"
         >
             <Modal.Header closeButton>
-                <Modal.Title>Create a task</Modal.Title>
+                <Modal.Title>
+                    {modalId === "add-task" ? "Create a task" : "Update task"}
+                </Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <Form className="add-task-form" onSubmit={handleSubmit}>
@@ -124,7 +146,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ show, setShow }) => {
                         <option value="done">Done</option>
                     </Form.Select>
                     <Button type="submit" className="submit-btn">
-                        Create
+                        {modalId === "add-task" ? "Create" : "Update"}
                     </Button>
                 </Form>
             </Modal.Body>

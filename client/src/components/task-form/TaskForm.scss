@@ -1,4 +1,5 @@
-#add-task {
+#add-task,
+#update-task {
     .add-task-form {
         display: flex;
         flex-direction: column;
@@ -8,7 +9,7 @@
             height: 100px;
         }
         .submit-btn {
-            width: 50%;
+            width: 40%;
         }
     }
 }
